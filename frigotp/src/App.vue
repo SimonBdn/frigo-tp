@@ -11,7 +11,7 @@
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       </template>
       <!-- le titre de la barre de navigation -->
-      <v-app-bar-title>Application recherche films</v-app-bar-title>
+      <v-app-bar-title>RÉFRIGÉRATEUR</v-app-bar-title>
       <!-- un simple bouton qui retourne à la page d'accueil route="/"-->
       <v-btn to="/">Home</v-btn>
       <!-- un bouton avec un menu -->
@@ -77,6 +77,7 @@
     </v-footer>
   </v-app>
 </template>
+
 <script setup>
 import { ref } from 'vue'
 const drawer = ref(false) // booléen pour afficher/cacher la zone de gauche
