@@ -41,7 +41,7 @@ watch(props, (newcritere) => {
   <v-row dense>
     <v-col
       v-for="aliment in listeAli"
-      :key="aliment.id"
+      :key="aliment.nom"
       cols="12"
       sm="6"
       md="3"
