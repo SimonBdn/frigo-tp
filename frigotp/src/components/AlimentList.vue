@@ -7,8 +7,8 @@ import FormText from "@/components/FormText.vue";
 
 <template>
 Rechercher d'aliment :
-  <FormText></FormText>
-  <AlimentAffich pcritere=""></AlimentAffich>
+
+  <AlimentAffich></AlimentAffich>
 </template>
 
 <style scoped>

@@ -1,9 +1,9 @@
 export default class Aliment{
-  constructor(AlimentJSON){
-    this._id = AlimentJSON.id
-    this._nom = AlimentJSON.nom
-    this._qte = AlimentJSON.qte
-    this._photo = AlimentJSON.photo ?? ""
+  constructor(id, nom, qte, photo){
+    this._id = id
+    this._nom = nom
+    this._qte = qte
+    this._photo = photo ?? ""
   }
 
   get id() {

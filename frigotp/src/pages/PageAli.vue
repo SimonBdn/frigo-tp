@@ -1,5 +1,4 @@
 <script setup>
-
 import AlimentList from "@/components/AlimentList.vue";
 </script>
 
