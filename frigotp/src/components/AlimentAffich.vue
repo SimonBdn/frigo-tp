@@ -91,7 +91,6 @@ function addAli(l) {
       <v-card color="primary">
         <v-img
           :src="aliment.photo"
-
         ></v-img>
         <v-card-title>
           {{ aliment.nom }} - qte: {{ aliment.qte }}
