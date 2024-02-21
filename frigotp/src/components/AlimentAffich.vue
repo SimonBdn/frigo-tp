@@ -96,15 +96,12 @@ function addAli(l) {
         <v-card-title>
           {{ aliment.nom }} - qte: {{ aliment.qte }}
         </v-card-title>
-
             <v-btn class="qte_btna">
               - 1
             </v-btn>
-
             <v-btn class="qte_btnb">
               + 1
             </v-btn>
-
       </v-card>
     </v-col>
   </v-row>
