@@ -76,6 +76,43 @@ function addAli(l) {
     .catch((error)=> console.log(error));
 }
 
+async function addOne(aliment){
+  if(aliment.qte > max_qte) {
+    aliment.qte++;
+    await updateQuantity(aliment);
+  }else {
+    console.log("La quantité max est atteinte!");
+  }
+}
+
+async function removeOne(aliment){
+  if (aliment.qte > 0) {
+    aliment.qte--;
+    await updateQuantity(aliment);
+  }else {
+    console.log("Tu as tout mangé deja!");
+    //mettre le if a 1 et else a 0 avec appel a la function removeAli
+  }
+}
+
+async function updateQuantity(aliment) {
+  const fetchOptions = {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({id: aliment.id, qte: aliment.qte})
+  };
+  try {
+    const response = await fetch(url, fetchOptions);
+    const dataJSON = await response.json();
+    console.log(dataJSON);
+    affichAli();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
 </script>
 
 <template>
@@ -95,10 +132,10 @@ function addAli(l) {
         <v-card-title>
           {{ aliment.nom }} - qte: {{ aliment.qte }}
         </v-card-title>
-            <v-btn class="qte_btna">
+            <v-btn class="qte_btna" @click="removeOne(aliment)">
               - 1
             </v-btn>
-            <v-btn class="qte_btnb">
+            <v-btn class="qte_btnb" @click="addOne(aliment)">
               + 1
             </v-btn>
       </v-card>
