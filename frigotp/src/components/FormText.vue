@@ -4,8 +4,9 @@
 
 <template>
   <form>
-    <input type="text" v-model="libelle" placeholder="Un p'tit Film ?" />
-    <input type="submit" value="Rechercher"/> </form>
+    <input type="text" v-model="libelle" placeholder="Un p'tit Aliment ?" />
+    <input type="submit" value="Rechercher"/>
+  </form>
 </template>
 
 <style scoped>

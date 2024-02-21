@@ -1,14 +1,15 @@
 <script setup>
 
-import {onMounted, reactive} from "vue";
+import {onMounted, reactive, watch} from "vue";
 import Aliment from "@/Aliment";
+
 
 const url="https://webmmi.iut-tlse3.fr/~pecatte/frigo/public/7/produits";
 const listeAli = reactive([]);
 
-//let props = defineProps(["pcritere"])
+let props = defineProps(["pcrit"])
 
-function searchAli() {
+function affichAli() {
   fetch(url)
     .then((response) => {
       return response.json();
@@ -25,8 +26,55 @@ function searchAli() {
     });
 }
 onMounted( () => {
-  searchAli();
+  affichAli();
 })
+
+
+function searchAli() {
+  const fetchOptions = { method: "GET" };
+  fetch(url + "?search="+"props", fetchOptions)
+    .then((response) => {
+      return response.json();
+    })
+    .then((dataJSON) => {
+      console.log(dataJSON);
+      listeAli.splice(0,listeAli.length)
+      for(let aliment of dataJSON){
+        listeAli.push(new Aliment(aliment))
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+onMounted(() => {
+  searchAli();
+});
+
+watch(props, (newcritere) => {
+  console.log(newcritere)
+  searchAli()
+});
+
+
+function addAli(l) {
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  const fetchOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: JSON.stringify({libelle: l}),
+  };
+  fetch(url, fetchOptions)
+    .then((response)=>{
+      return response.json();
+    })
+    .then((dataJSON)=>{
+      console.log(dataJSON);
+      affichAli()
+    })
+    .catch((error)=> console.log(error));
+}
 
 </script>
 
@@ -46,11 +94,21 @@ onMounted( () => {
 
         ></v-img>
         <v-card-title>
-          {{ aliment.nom }} - quantité : {{ aliment.qte }}
+          {{ aliment.nom }} - qte: {{ aliment.qte }}
         </v-card-title>
+
+            <v-btn class="qte_btna">
+              - 1
+            </v-btn>
+
+            <v-btn class="qte_btnb">
+              + 1
+            </v-btn>
+
       </v-card>
     </v-col>
   </v-row>
+
 
 </template>
 
@@ -58,5 +116,16 @@ onMounted( () => {
 .image{
   width: 400px;
   height: 300px;
+}
+
+.qte_btna{
+  color: saddlebrown;
+  border-radius: 50%;
+  float: left;
+}
+.qte_btnb{
+  color: saddlebrown;
+  border-radius: 50%;
+  float: right;
 }
 </style>

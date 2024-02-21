@@ -6,9 +6,9 @@ import FormText from "@/components/FormText.vue";
 </script>
 
 <template>
-Rechercher d'aliment :
-
-  <AlimentAffich></AlimentAffich>
+Rechercher d'aliment : <br><br>
+  <FormText></FormText>
+  <AlimentAffich pcrit="tomate"></AlimentAffich>
 </template>
 
 <style scoped>
