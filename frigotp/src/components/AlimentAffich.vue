@@ -2,9 +2,10 @@
 
 import {onMounted, reactive, watch} from "vue";
 import Aliment from "@/Aliment";
+import * as Vue from 'vue';
 
 
-const url="https://webmmi.iut-tlse3.fr/~pecatte/frigo/public/7/produits";
+const url="https://webmmi.iut-tlse3.fr/~pecatte/frigo/public/6/produits";
 const listeAli = reactive([]);
 
 let props = defineProps(["pcrit"])
@@ -77,9 +78,10 @@ function addAli(l) {
 }
 
 async function addOne(aliment){
-  if(aliment.qte > max_qte) {
+  if(aliment.qte < aliment.max_qte) {
     aliment.qte++;
     await updateQuantity(aliment);
+    Vue.set(aliment, 'qte', aliment.qte);
   }else {
     console.log("La quantité max est atteinte!");
   }
@@ -89,6 +91,7 @@ async function removeOne(aliment){
   if (aliment.qte > 0) {
     aliment.qte--;
     await updateQuantity(aliment);
+    Vue.set(aliment, 'qte', aliment.qte);
   }else {
     console.log("Tu as tout mangé deja!");
     //mettre le if a 1 et else a 0 avec appel a la function removeAli

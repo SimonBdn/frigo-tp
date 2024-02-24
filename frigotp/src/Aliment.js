@@ -1,9 +1,10 @@
 export default class Aliment{
-  constructor(id, nom, qte, photo){
+  constructor(id, nom, qte, photo,max_qte){
     this._id = id
     this._nom = nom
     this._qte = qte
     this._photo = photo ?? ""
+    this._max_qte = max_qte ?? qte
   }
 
   get id() {
@@ -19,6 +20,8 @@ export default class Aliment{
     return this._photo
   }
 
-
+  get max_qte(){
+    return this._max_qte
+  }
 
 }
