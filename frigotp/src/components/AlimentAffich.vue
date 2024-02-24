@@ -58,40 +58,22 @@ watch(props, (newcritere) => {
 });
 
 
-function addAli(l) {
-  let myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  const fetchOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: JSON.stringify({libelle: l}),
-  };
-  fetch(url, fetchOptions)
-    .then((response)=>{
-      return response.json();
-    })
-    .then((dataJSON)=>{
-      console.log(dataJSON);
-      affichAli()
-    })
-    .catch((error)=> console.log(error));
-}
+
 
 async function addOne(aliment){
-  if(aliment.qte < aliment.max_qte) {
-    aliment.qte++;
+  if(aliment.actual_qte < aliment.qte) {
+    aliment.actual_qte++;
     await updateQuantity(aliment);
-    Vue.set(aliment, 'qte', aliment.qte);
   }else {
+    console.log(aliment)
     console.log("La quantité max est atteinte!");
   }
 }
 
 async function removeOne(aliment){
-  if (aliment.qte > 0) {
-    aliment.qte--;
+  if (aliment.actual_qte > 0) {
+    aliment.actual_qte--;
     await updateQuantity(aliment);
-    Vue.set(aliment, 'qte', aliment.qte);
   }else {
     console.log("Tu as tout mangé deja!");
     //mettre le if a 1 et else a 0 avec appel a la function removeAli
@@ -102,7 +84,7 @@ async function updateQuantity(aliment) {
   const fetchOptions = {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({id: aliment.id, qte: aliment.qte})
+    body: JSON.stringify({id: aliment.id, qte: aliment.actual_qte})
   };
   try {
     const response = await fetch(url, fetchOptions);
@@ -114,6 +96,21 @@ async function updateQuantity(aliment) {
   }
 }
 
+
+function deleteAli(idAliment) {
+  const fetchOptions = {
+    method: "DELETE",
+  };
+  fetch(url+"/"+idAliment, fetchOptions)
+    .then((response)=>{
+      return response.json();
+    })
+    .then((dataJSON)=>{
+      console.log(dataJSON);
+      affichAli();
+    })
+    .catch((error)=> console.log(error));
+}
 
 
 </script>
@@ -133,13 +130,16 @@ async function updateQuantity(aliment) {
           :src="aliment.photo"
         ></v-img>
         <v-card-title>
-          {{ aliment.nom }} - qte: {{ aliment.qte }}
+          {{ aliment.nom }} - qte: {{ aliment.actual_qte }}
         </v-card-title>
             <v-btn class="qte_btna" @click="removeOne(aliment)">
               - 1
             </v-btn>
             <v-btn class="qte_btnb" @click="addOne(aliment)">
               + 1
+            </v-btn>
+            <v-btn class="sup_btn" @click="deleteAli(idAliment)">
+               X
             </v-btn>
       </v-card>
     </v-col>
@@ -163,5 +163,10 @@ async function updateQuantity(aliment) {
   color: saddlebrown;
   border-radius: 50%;
   float: right;
+}
+.sup_btn{
+  color: red;
+  border-radius: 20%;
+
 }
 </style>

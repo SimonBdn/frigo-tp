@@ -14,7 +14,7 @@
       <!-- un simple bouton qui retourne à la page d'accueil route="/"-->
       <v-btn to="/">O'Frais</v-btn>
       <!-- un bouton avec un menu -->
-      <v-btn id="menu-recherche">Rechercher ...</v-btn>
+      <v-btn id="menu-recherche" to="/PageAli">Ajouter ...</v-btn>
       <!-- le menu s'affichera qd l'élément
       d'id 'menu-recherche' ici 'v-btn' sera activé-->
       <v-menu activator="#menu-recherche">
