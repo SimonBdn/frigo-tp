@@ -65,8 +65,8 @@ async function addOne(aliment){
     aliment.actual_qte++;
     await updateQuantity(aliment);
   }else {
-    console.log(aliment)
     console.log("La quantité max est atteinte!");
+    alert("La quantité max est atteinte !");
   }
 }
 
@@ -75,7 +75,8 @@ async function removeOne(aliment){
     aliment.actual_qte--;
     await updateQuantity(aliment);
   }else {
-    console.log("Tu as tout mangé deja!");
+    console.log("Tu as tout mangé deja !");
+    alert("Tu as tout mangé deja!")
     //mettre le if a 1 et else a 0 avec appel a la function removeAli
   }
 }
@@ -125,7 +126,7 @@ function deleteAli(idAliment) {
       md="3"
       lg="2"
       xl="2">
-      <v-card color="primary">
+      <v-card color="brown">
         <v-img
           :src="aliment.photo"
         ></v-img>
@@ -138,9 +139,7 @@ function deleteAli(idAliment) {
             <v-btn class="qte_btnb" @click="addOne(aliment)">
               + 1
             </v-btn>
-            <v-btn class="sup_btn" @click="deleteAli(idAliment)">
-               X
-            </v-btn>
+            <v-btn class="sup_btn" @click="deleteAli(aliment.id)"> X </v-btn>
       </v-card>
     </v-col>
   </v-row>
@@ -165,8 +164,13 @@ function deleteAli(idAliment) {
   float: right;
 }
 .sup_btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
   color: red;
-  border-radius: 20%;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
 
 }
 </style>
