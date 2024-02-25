@@ -2,7 +2,7 @@
   <v-container>
     LE FRIGO
   </v-container> <br>
-  <AlimentList></AlimentList>
+
   <AlimentAffich></AlimentAffich>
 </template>
 

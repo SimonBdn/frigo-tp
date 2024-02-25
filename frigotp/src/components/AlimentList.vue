@@ -1,6 +1,5 @@
 <script setup>
 
-import AlimentAffich from "@/components/AlimentAffich.vue";
 const nomA="";
 
 </script>
@@ -19,7 +18,6 @@ const nomA="";
   </div>
 
 
-  <!--<AlimentAffich pcrit=""></AlimentAffich>-->
 </template>
 
 <style scoped>

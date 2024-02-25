@@ -122,6 +122,9 @@ function deleteAli(idAliment) {
 </script>
 
 <template>
+<div>
+  <AlimentList @search="searchAli"/>
+</div>
 
   <v-row dense>
     <v-col

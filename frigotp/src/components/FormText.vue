@@ -13,20 +13,7 @@ let photo = "";
     <input class="add_btn" type="submit" value=" Ajouter "/>
   </form>
 
-  <!--<label for="nom" class="form-label">Nom:</label>
-  <input type="text" v-model="nom" class="form-control" id="nom" required>
-  </div>
-  <div class="mb-3">
-    <label for="qte" class="form-label">Quantité:</label>
-    <input type="number" v-model="qte" class="form-control" id="qte" required>
-  </div>
-  <div class="mb-3">
-    <label for="photo" class="form-label">Image URL:</label>
-    <input type="text" v-model="photo" class="form-control" id="photo">
-  </div>
-  <div class="d-flex justify-content-center mb-3">
-    <button type="submit" class="btn btn-success">Valider</button>
-  -->
+
 </template>
 
 <style scoped>
