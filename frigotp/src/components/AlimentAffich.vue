@@ -2,11 +2,13 @@
 
 import {onMounted, reactive, watch} from "vue";
 import Aliment from "@/Aliment";
+import AlimentList from "@/components/AlimentList.vue";
 import * as Vue from 'vue';
 
 
 const url="https://webmmi.iut-tlse3.fr/~pecatte/frigo/public/6/produits";
 const listeAli = reactive([]);
+const rechercheList = reactive([]);
 
 let props = defineProps(["pcrit"])
 
@@ -31,18 +33,21 @@ onMounted( () => {
 })
 
 
-function searchAli() {
+function searchAli(nomA) {
   const fetchOptions = { method: "GET" };
-  fetch(url + "?search="+"props", fetchOptions)
+  fetch(url + `?search=${nomA}`, fetchOptions)
     .then((response) => {
       return response.json();
     })
     .then((dataJSON) => {
       console.log(dataJSON);
-      listeAli.splice(0,listeAli.length)
+      let texteHTML = "";
+      rechercheList.splice(0,rechercheList.length)
       for(let aliment of dataJSON){
-        listeAli.push(new Aliment(aliment))
+        rechercheList.push(new Aliment(aliment.id, aliment.nom, aliment.qte, aliment.photo))
+        texteHTML += `<option>${aliment.nom} (quantité : ${aliment.qte}) ${aliment.photo}</option>`
       }
+      document.getElementById('search').innerHTML = texteHTML;
     })
     .catch((error) => {
       console.log(error);
@@ -52,10 +57,10 @@ onMounted(() => {
   searchAli();
 });
 
-watch(props, (newcritere) => {
+/*watch(props, (newcritere) => {
   console.log(newcritere)
   searchAli()
-});
+});*/
 
 
 
@@ -117,6 +122,7 @@ function deleteAli(idAliment) {
 </script>
 
 <template>
+
   <v-row dense>
     <v-col
       v-for="aliment in listeAli"

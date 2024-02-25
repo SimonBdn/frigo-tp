@@ -1,16 +1,34 @@
 <script setup>
 
 import AlimentAffich from "@/components/AlimentAffich.vue";
-
+const nomA="";
 
 </script>
 
 <template>
-Rechercher d'aliment : <br><br>
 
-  <AlimentAffich pcrit=""></AlimentAffich>
+  <div id="rech">
+    <form @submit.prevent="$emit('search', nomA)">
+      <label>Rechercher un aliment :</label>
+      <br><br>
+      <input class="sea_bar" type="text" v-model="nomA" placeholder="Tu veux manger quoi ?" required/>
+      <br><br>
+      <input class="sea_btn" type="submit" value=" Rechercher " />
+      <br><br>
+    </form>
+  </div>
+
+
+  <!--<AlimentAffich pcrit=""></AlimentAffich>-->
 </template>
 
 <style scoped>
+.sea_bar{
+  border: 1px solid saddlebrown;
+}
 
+.sea_btn{
+  background-color: #caf5df;
+  border: 1px solid saddlebrown;
+}
 </style>
