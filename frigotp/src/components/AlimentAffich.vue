@@ -107,7 +107,7 @@ function deleteAli(idAliment) {
       lg="2"
       xl="2">
       <v-card color="brown">
-        <v-img
+        <v-img class="img"
           :src="aliment.photo"
         ></v-img>
         <v-card-title>
@@ -128,7 +128,7 @@ function deleteAli(idAliment) {
 </template>
 
 <style scoped>
-.image{
+.img{
   width: 400px;
   height: 300px;
 }
