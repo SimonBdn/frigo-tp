@@ -1,25 +1,34 @@
 <script setup>
-import AlimentList from "@/components/AlimentList.vue";
+
 import AddAlimentFrigo from "@/components/AddAlimentFrigo.vue";
-import FormText from "@/components/FormText.vue";
+
 </script>
 
 <template>
+  <v-container class="aDD">
+  <v-container class="title"> P'tite courses ? </v-container>
+  <br><br><br><br><br><br>
 
-  <v-container> ALIMENTS </v-container>
   <AddAlimentFrigo />
-  <FormText />
 
+  </v-container>
 
 </template>
 
 <style scoped>
+.title{
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  color: #f50505;
+  font-weight: bold;
+}
 
-template{
+.aDD{
   background-image: url("../assets/marche.jpg");
   background-size: cover;
-  background-position: center; /* Center the background image */
-  padding: 20px; /* Add padding for better readability */
+  background-position: center;
+  padding: 40px;
+  min-height: 600px;
 }
 
 </style>

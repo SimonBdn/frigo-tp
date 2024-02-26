@@ -36,26 +36,6 @@ function updateR(n){
   affichAli()
 }
 
-/*function searchAli(nomA) {
-  const fetchOptions = { method: "GET" };
-  fetch(url + `?search=${nomA}`, fetchOptions)
-    .then((response) => {
-      return response.json();
-    })
-    .then((dataJSON) => {
-      console.log(dataJSON);
-      listeAli.splice(0,listeAli.length)
-      for(let aliment of dataJSON){
-        listeAli.push(new Aliment(aliment.id, aliment.nom, aliment.qte, aliment.photo))
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}*/
-
-
-
 async function addOne(aliment){
   if(aliment.actual_qte < aliment.qte) {
     aliment.actual_qte++;
@@ -79,7 +59,7 @@ async function removeOne(aliment){
 
 async function updateQuantity(aliment) {
   const fetchOptions = {
-    method: "POST",
+    method: "PUT",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({id: aliment.id, qte: aliment.actual_qte})
   };

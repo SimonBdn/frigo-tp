@@ -11,7 +11,6 @@ function searchA(nomA){
 
 
 watch(nomA, (newValue) => {
-  console.log(newValue)
   searchA(newValue)
 });
 

@@ -10,7 +10,7 @@ function addAli(n,q,p) {
   const fetchOptions = {
     method: "POST",
     headers: myHeaders,
-    body: JSON.stringify({id: this.id, nom: n, qte: q, photo: p}),
+    body: JSON.stringify({id: 46, nom: n, qte: q, photo: p}),
   };
   fetch(url, fetchOptions)
     .then((response)=>{
@@ -28,7 +28,7 @@ function addAli(n,q,p) {
 
 <template>
 
-
+<FormText @addAli="addAli"/>
 
 </template>
 

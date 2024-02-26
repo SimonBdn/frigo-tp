@@ -51,4 +51,6 @@ const drawer = ref(false) // booléen pour afficher/cacher la zone de gauche
   min-height: 100vh;
   text-align: center;
 }
+
+
 </style>
