@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="title">
     LE FRIGO
   </v-container> <br>
 
@@ -8,6 +8,15 @@
 
 <script setup>
 
-import AlimentList from "@/components/AlimentList.vue";
+
 import AlimentAffich from "@/components/AlimentAffich.vue";
 </script>
+
+<style scoped>
+  .title{
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    color: #f50505;
+    font-weight: bold;
+  }
+</style>

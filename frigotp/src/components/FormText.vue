@@ -31,7 +31,7 @@ const handleSubmit = () => {
     <br>
     <input class="add_barp" type="text" v-model="photo" placeholder=" Une image ?"/>
   </div>
-  <br> <br>
+
   <input class="add_btn" type="submit" value=" Ajouter "/>
   </form>
   </div>

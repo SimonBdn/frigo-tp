@@ -1,9 +1,8 @@
 <script setup>
 
-import {onMounted, reactive, watch} from "vue";
+import {onMounted, reactive} from "vue";
 import Aliment from "@/Aliment";
 import AlimentList from "@/components/AlimentList.vue";
-import * as Vue from 'vue';
 
 
 const url="https://webmmi.iut-tlse3.fr/~pecatte/frigo/public/6/produits";
@@ -41,7 +40,6 @@ async function addOne(aliment){
     aliment.actual_qte++;
     await updateQuantity(aliment);
   }else {
-    console.log("La quantité max est atteinte!");
     alert("La quantité max est atteinte !");
   }
 }
@@ -51,9 +49,7 @@ async function removeOne(aliment){
     aliment.actual_qte--;
     await updateQuantity(aliment);
   }else {
-    console.log("Tu as tout mangé deja !");
     alert("Tu as tout mangé deja!")
-    //mettre le if a 1 et else a 0 avec appel a la function removeAli
   }
 }
 
@@ -129,8 +125,8 @@ function deleteAli(idAliment) {
 
 <style scoped>
 .img{
-  width: 400px;
-  height: 300px;
+  width: 300px;
+  height: 250px;
 }
 
 .qte_btna{

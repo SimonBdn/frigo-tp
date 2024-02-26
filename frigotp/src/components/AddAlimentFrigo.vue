@@ -1,6 +1,6 @@
 <script setup>
 import FormText from "@/components/FormText.vue";
-import AlimentAffich from "@/components/AlimentAffich.vue";
+
 
 const url="https://webmmi.iut-tlse3.fr/~pecatte/frigo/public/6/produits"
 
