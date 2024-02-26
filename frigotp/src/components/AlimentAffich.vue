@@ -8,12 +8,11 @@ import * as Vue from 'vue';
 
 const url="https://webmmi.iut-tlse3.fr/~pecatte/frigo/public/6/produits";
 const listeAli = reactive([]);
-const rechercheList = reactive([]);
 
-let props = defineProps(["pcrit"])
+let nomA ='';
 
 function affichAli() {
-  fetch(url)
+  fetch(url+ `?search=`+ nomA)
     .then((response) => {
       return response.json();
     })
@@ -32,8 +31,12 @@ onMounted( () => {
   affichAli();
 })
 
+function updateR(n){
+  nomA=n
+  affichAli()
+}
 
-function searchAli(nomA) {
+/*function searchAli(nomA) {
   const fetchOptions = { method: "GET" };
   fetch(url + `?search=${nomA}`, fetchOptions)
     .then((response) => {
@@ -41,27 +44,15 @@ function searchAli(nomA) {
     })
     .then((dataJSON) => {
       console.log(dataJSON);
-      let texteHTML = "";
-      rechercheList.splice(0,rechercheList.length)
+      listeAli.splice(0,listeAli.length)
       for(let aliment of dataJSON){
-        rechercheList.push(new Aliment(aliment.id, aliment.nom, aliment.qte, aliment.photo))
-        texteHTML += `<option>${aliment.nom} (quantité : ${aliment.qte}) ${aliment.photo}</option>`
+        listeAli.push(new Aliment(aliment.id, aliment.nom, aliment.qte, aliment.photo))
       }
-      document.getElementById('search').innerHTML = texteHTML;
     })
     .catch((error) => {
       console.log(error);
     });
-}
-onMounted(() => {
-  searchAli();
-});
-
-/*watch(props, (newcritere) => {
-  console.log(newcritere)
-  searchAli()
-});*/
-
+}*/
 
 
 
@@ -123,7 +114,7 @@ function deleteAli(idAliment) {
 
 <template>
 <div>
-  <AlimentList @search="searchAli"/>
+  <AlimentList @updateR="updateR"/>
 </div>
 
   <v-row dense>

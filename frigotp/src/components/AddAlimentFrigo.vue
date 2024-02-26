@@ -10,7 +10,7 @@ function addAli(n,q,p) {
   const fetchOptions = {
     method: "POST",
     headers: myHeaders,
-    body: JSON.stringify({nom: n, qte: q, photo: p}),
+    body: JSON.stringify({id: this.id, nom: n, qte: q, photo: p}),
   };
   fetch(url, fetchOptions)
     .then((response)=>{
@@ -18,7 +18,7 @@ function addAli(n,q,p) {
     })
     .then((dataJSON)=>{
       console.log(dataJSON);
-      affichAli();
+      //affichAli();
     })
     .catch((error)=> console.log(error));
 }
